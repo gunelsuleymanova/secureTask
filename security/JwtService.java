@@ -18,9 +18,9 @@ public class JwtService {
 
 
     public String generateToken(UserEntity d){
-        return Jwts.builder().setSubject(d.getUsername())
+        return Jwts.builder().setSubject(d.getId().toString())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis()+ 10000))
+                .setExpiration(new Date(System.currentTimeMillis()+ 100000))
                 .signWith(Keys.hmacShaKeyFor(SECRET.getBytes()))
                 .compact();
     }

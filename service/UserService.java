@@ -55,6 +55,14 @@ public class UserService {
 
 
 
+    public UserRequestDto get(Long id){
+        var user = userRepos.findById(id).orElseThrow();
+        var us= userMapper.entityToDto(user);
+        return us;
+    }
+
+
+
 
 
 

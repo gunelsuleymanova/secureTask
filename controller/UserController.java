@@ -6,10 +6,7 @@ import com.example.user.dto.UserRequestDto;
 import com.example.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,6 +29,11 @@ public class UserController {
     @PostMapping("/sign")
     public ResponseEntity<String> sign(@RequestBody UserLoginDto d){
         return ResponseEntity.ok(userService.sinin(d));
+    }
+
+    @GetMapping("/get/{id}")
+    public UserRequestDto get(@PathVariable Long id){
+        return userService.get(id);
     }
 
 
